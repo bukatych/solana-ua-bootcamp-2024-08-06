@@ -22,7 +22,7 @@ for (let i = 0; i < 1_000_000_000; i++) {
         console.log("⚡ Generated keypair matches the provided public key");
         console.log("Public key:", keypair.publicKey.toBase58());
         console.log("Private key:", keypair.secretKey.toString());
-        fs.writeFileSync('kumeka-keys.json', JSON.stringify({
+        fs.writeFileSync('my-keys.json', JSON.stringify({
             SECRET_KEY: keypair.secretKey.toString(),
             PUBLIC_KEY: keypair.publicKey.toBase58()
         }));
