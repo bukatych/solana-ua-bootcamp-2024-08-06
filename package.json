@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@solana-developers/helpers": "^2.4.0",
+    "@solana/spl-token": "^0.4.8",
     "@solana/web3.js": "^1.95.2",
-    "esrun": "^3.2.26"
+    "esrun": "^3.2.26",
+    "prettier": "^3.3.3"
   }
 }
