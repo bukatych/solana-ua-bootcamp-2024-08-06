@@ -16,12 +16,16 @@ const connection = new Connection(clusterApiUrl("devnet"));
 // Our token has two decimal places
 const MINOR_UNITS_PER_MAJOR_UNITS = Math.pow(10, 2);
 
-const tokenMintAccount = new PublicKey(
-  "7zGhutVWBoyg6jrzpD7qHFULtEcV7ZoVuu11BWqWZdN",
-);
+const mintAddress = process.env.TOKEN_MINT_KEY;
+if (mintAddress === undefined) {
+  console.log("Add TOKEN_MINT_KEY to .env!");
+  process.exit(1);
+}
+
+const tokenMintAccount = new PublicKey(mintAddress);
 
 const recipientAssociatedTokenAccount = new PublicKey(
-  "H3uQN3QKW3wJ814YXzMCqWv1x22P57Xn843caJLfzB9R",
+  "2PxKgjMYEBLS4S8eCSgJoN69jPTXQQ896YCYKDqrNt3W",
 );
 
 const transactionSignature = await mintTo(

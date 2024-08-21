@@ -15,9 +15,13 @@ const connection = new Connection(clusterApiUrl("devnet"));
 
 console.log(`🔑 Our pubic key is: ${sender.publicKey.toBase58()}`);
 
-const tokenMintAccount = new PublicKey(
-  "7zGhutVWBoyg6jrzpD7qHFULtEcV7ZoVuu11BWqWZdN",
-);
+const mintAddress = process.env.TOKEN_MINT_KEY;
+if (mintAddress === undefined) {
+  console.log("Add TOKEN_MINT_KEY to .env!");
+  process.exit(1);
+}
+
+const tokenMintAccount = new PublicKey(mintAddress);
 const recipient = new PublicKey(sender.publicKey);
 
 const tokenAccount = await getOrCreateAssociatedTokenAccount(
